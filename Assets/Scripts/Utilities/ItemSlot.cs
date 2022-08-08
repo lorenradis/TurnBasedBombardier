@@ -12,10 +12,16 @@ public class ItemSlot : MonoBehaviour
     {
         item = newItem;
         image.sprite = newItem.itemIcon;
+        image.enabled = true;
     }
 
     public virtual void SetItem(Item newItem, ShopKeeper newShopKeeper)
     {
 
+    }
+
+    public void SelectThisItem()
+    {
+        GameManager.instance.uiManager.SelectItem(item);
     }
 }

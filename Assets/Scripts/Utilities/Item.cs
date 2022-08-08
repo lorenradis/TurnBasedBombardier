@@ -5,8 +5,8 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public string itemName;
+    public string description;
     public int quantity;
-    public int isStackable;
     public int maxStackSize;
     public int sellPrice;
     public int purchasePrice;

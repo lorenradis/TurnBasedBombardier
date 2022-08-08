@@ -19,8 +19,8 @@ public class AudioManager : MonoBehaviour
     {
         if(clip != BGMSource.clip)
         {
-            BGMSource.clip = clip;
-            BGMSource.Play();
+            StartCoroutine(FadeToNewBGM(clip));
+
         }
     }
 
@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
     {
         if (SFXSource.isPlaying)
         {
+            Debug.Log("should be playing " + clip.name + " on the secondary channel now");
             SecondarySFXSource.clip = clip;
             SecondarySFXSource.Play();
         }

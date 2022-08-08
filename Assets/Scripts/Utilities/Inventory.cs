@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
 
     public List<Item> items = new List<Item>();
 
@@ -19,12 +20,35 @@ public class Inventory : MonoBehaviour {
             items.Add(item);
             return true;
         }
+        if (item.maxStackSize > 1)
+        {
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (item.itemName == items[i].itemName)
+                {
+                    if (items[i].quantity < item.maxStackSize - item.quantity)
+                    {
+                        items[i].quantity += item.quantity;
+                    }else
+                    {
+                        int dif = item.maxStackSize - items[i].quantity;
+                        item.quantity -= dif;
+                        items[i].quantity += dif;
+                    }
+                    if(item.quantity < 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 
     public void RemoveItemFromList(Item item)
     {
-        if(items.Contains(item))
+        if (items.Contains(item))
         {
             items.Remove(item);
         }

@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -8802481121794571027}
         m_TargetAssemblyTypeName: ShopItemSlot, Assembly-CSharp
-        m_MethodName: ConfirmSellItem
+        m_MethodName: ConfirmItemPurchase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -10,23 +10,24 @@ public class ShopItemSlot : ItemSlot
     {
         item = newItem;
         shopKeeper = newShopkeeper;
+        image.sprite = item.itemIcon;
     }
 
-    public void ConfirmSellItem()
+    public void ConfirmItemPurchase()
     {
         GameManager.instance.uiManager.HideShopInventory();
 
         if (GameManager.instance.money >= item.purchasePrice)
         {
 
-            DialogManager.instance.ShowQuestion("Are you sure you want to buy the " + item.itemName + "?", () =>
+            DialogManager.instance.ShowQuestion("Oh one o' them " + item.itemName + "s, huh?  That'll run ya about " + item.purchasePrice + " gold, sound OK?", () =>
             {
-                SellItem();
-                DialogManager.instance.ShowQuestion("You purchased the " + item.itemName + "!", "Yay!", "Cool", () => {
+                PurchaseItem();
+                DialogManager.instance.ShowDialog("You purchased the " + item.itemName + "!");
+                DialogManager.instance.ShowQuestion("Would you like to buy something else?",() => {
                     GameManager.instance.uiManager.DisplayShopInventory(shopKeeper.itemsForSale, shopKeeper);
                 }, () => {
-                    GameManager.instance.uiManager.DisplayShopInventory(shopKeeper.itemsForSale, shopKeeper);
-
+                    shopKeeper.AnythingElse();
                 });
                 
             }, () =>
@@ -38,15 +39,15 @@ public class ShopItemSlot : ItemSlot
         {
             DialogManager.instance.ShowQuestion("Sorry, you can't afford that", "Okay", "Gotcha", () =>
             {
-                GameManager.instance.uiManager.DisplayShopInventory(shopKeeper.itemsForSale, shopKeeper);
+                shopKeeper.AnythingElse();
             }, () => {
-                GameManager.instance.uiManager.DisplayShopInventory(shopKeeper.itemsForSale, shopKeeper);
+                shopKeeper.AnythingElse();
             });
         }
 
     }
 
-    public void SellItem()
+    public void PurchaseItem()
     {
         GameManager.instance.inventory.AddItemToList(Instantiate(item));
         GameManager.instance.GainMoney(item.purchasePrice * -1);

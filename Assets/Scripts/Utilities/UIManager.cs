@@ -27,10 +27,21 @@ public class UIManager : MonoBehaviour
 
     private Inventory inventory;
 
+    private bool isSelling = false;
+    private bool isBuying = false;
+
+    private List<Item> itemsToSell = new List<Item>();
+    private List<Item> itemsToBuy = new List<Item>();
+
+
+    [SerializeField]
+    private RectTransform exitButton;
+
     [SerializeField]
     private GameObject shopKeeperPanel;
     [SerializeField]
     private ItemSlot[] shopItemSlots;
+    private ShopKeeper shopKeeper;
     private List<Item> shopKeeperInventory = new List<Item>();
 
     private void Start()
@@ -129,6 +140,8 @@ public class UIManager : MonoBehaviour
 
     public void ToggleInventory()
     {
+        if (GameManager.instance.gameState != GameManager.GameState.NORMAL)
+            return;
         if(inventoryPanel.activeSelf)
         {
             HideInventory();
@@ -141,15 +154,22 @@ public class UIManager : MonoBehaviour
 
     public void ShowInventory()
     {
-        Debug.Log("Should be showing inventory");
+        if(isSelling || isBuying)
+        {
+            exitButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            exitButton.gameObject.SetActive(true);
+        }
+        GameManager.instance.EnterMenuState();
         inventoryPanel.SetActive(true);
         inventory.isActive = true;
         for (int i = 0; i < itemSlots.Length; i++)
         {
             if (i < inventory.items.Count)
             {
-                itemSlots[i].image.sprite = inventory.items[i].itemIcon;
-                itemSlots[i].image.enabled = true;
+                itemSlots[i].SetItem(GameManager.instance.inventory.items[i]);
             }
             else
             {
@@ -160,13 +180,20 @@ public class UIManager : MonoBehaviour
 
     public void HideInventory()
     {
-        Debug.Log("Now I'm hiding the inventory");
-        inventoryPanel.SetActive(false);
-        inventory.isActive = false;
+            GameManager.instance.ExitMenuState();
+            Debug.Log("Now I'm hiding the inventory");
+            inventoryPanel.SetActive(false);
+            inventory.isActive = false;
     }
 
-    public void DisplayShopInventory(List<Item> items, ShopKeeper shopKeeper)
+    public void DisplayShopInventory(List<Item> items, ShopKeeper _shopKeeper)
     {
+        isSelling = false;
+        isBuying = true;
+
+        itemsToBuy.Clear();
+
+        shopKeeper = _shopKeeper;
         shopKeeperInventory.Clear();
 
         shopKeeperPanel.SetActive(true);
@@ -194,15 +221,118 @@ public class UIManager : MonoBehaviour
     public void HideShopInventory()
     {
         shopKeeperPanel.SetActive(false);
+        shopKeeper = null;
         GameManager.instance.ExitMenuState();
     }
 
-    public void DisplaySellableInventory()
+    public void SelectItem(Item item)
+    {
+        int cash = 0;
+        if (isSelling)
+        {
+            if (itemsToSell.Contains(item))
+            {
+                itemsToSell.Remove(item);
+            }
+            else
+            {
+               itemsToSell.Add(item);
+            }
+
+            cash = 0;
+
+            for (int i = 0; i < itemsToSell.Count; i++)
+            {
+                cash += itemsToSell[i].sellPrice;    
+            }
+
+
+        }else if(isBuying)
+        {
+            if(itemsToBuy.Contains(item))
+            {
+                itemsToBuy.Remove(item);
+            }
+            else
+            {
+                itemsToBuy.Add(item);
+            }
+
+            cash = 0;
+
+            for (int i = 0; i < itemsToBuy.Count; i++)
+            {
+                cash += itemsToBuy[i].sellPrice;
+            }
+
+        }
+        else
+        {
+            ShowItemInfo(item);
+        }
+    }
+
+    public void ConfirmSell()
+    {
+        if(itemsToSell.Count < 1)
+        {
+            DialogManager.instance.ShowQuestion("You gotta tell me what you wanna sell, bud.", "Confirm", "Cancel", () => { ConfirmSell(); }, () => { CancelSell(); }); 
+            return;
+        }
+
+        isSelling = false;
+        isBuying = false;
+
+        int cash = 0;
+        for (int i = 0; i < itemsToSell.Count; i++)
+        {
+            cash += itemsToSell[i].sellPrice;
+            inventory.RemoveItemFromList(itemsToSell[i]);
+        }
+
+        GameManager.instance.GainMoney(cash);
+
+        itemsToSell.Clear();
+
+        HideInventory();
+
+        shopKeeper.SuccessfulPlayerSale();
+    }
+
+    public void CancelSell()
+    {
+        isSelling = false;
+        itemsToSell.Clear();
+        DialogManager.instance.ShowQuestion("Aw, that's too bad.  Anything else I can do for ya?", "Yes", "No", () => { }, () => { });
+    }
+
+    public void ConfirmPurchase()
     {
 
     }
 
-    public void HideSellableInventory()
+    public void CancelPurchase()
+    {
+        isBuying = false;
+        itemsToBuy.Clear();
+    }
+
+
+    public void DisplaySellableInventory(ShopKeeper _shopKeeper)
+    {
+        shopKeeper = _shopKeeper;
+        itemsToSell.Clear();
+        ShowInventory();
+        isSelling = true;
+        isBuying = false;
+    }
+
+    public void ShowItemInfo(Item item)
+    {
+
+    }
+
+    private void HideItemInfo()
     {
 
     }
