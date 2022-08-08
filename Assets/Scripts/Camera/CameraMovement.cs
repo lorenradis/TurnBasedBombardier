@@ -7,6 +7,13 @@ public class CameraMovement : MonoBehaviour
     private float maxDist = 4f;
     public float moveSpeed = 8f;
 
+    [SerializeField]
+    private AudioClip ambientSound;
+    public AudioClip AmbientSound { get { return ambientSound; } set { } }
+    [SerializeField]
+    private AudioClip bgmSound;
+    public AudioClip BGMSound { get { return bgmSound; } set { } }
+
     private void Start()
     {
         if (GameManager.instance.player == null)

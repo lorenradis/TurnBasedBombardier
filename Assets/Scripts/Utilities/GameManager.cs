@@ -405,11 +405,14 @@ public class GameManager : MonoBehaviour
     {
         ChangeState(GameState.LOADING);
         uiManager.FadeOut();
+
         yield return new WaitForSeconds(.5f);
 
         SceneManager.LoadScene(sceneName);
 
         yield return new WaitForSeconds(.25f);
+
+        
 
         uiManager.FadeIn();
         yield return new WaitForSeconds(.25f);

@@ -251,7 +251,10 @@ public class MapBuilder : MonoBehaviour
             {
                 tries++;
                 if (tries > maxTries)
+                {
+                    Debug.Log("Got stuck placing enemies");
                     break;
+                }
                 index = Random.Range(0, floorTiles.Count);
                 dist = Vector2.Distance(GameManager.instance.player.transform.position, floorTiles[index]);
             }
@@ -264,12 +267,21 @@ public class MapBuilder : MonoBehaviour
     {
         int minDist = 3;
 
+        float maxTime = 1f;
+        float elapsedTime = 0f;
+
         for (int i = 0; i < healthPickupsCount; i++)
         {
             int index = Random.Range(0, floorTiles.Count);
             float dist = Vector2.Distance(GameManager.instance.player.transform.position, floorTiles[index]);
             while (dist < minDist)
             {
+                elapsedTime += Time.deltaTime;
+                if(elapsedTime > maxTime)
+                {
+                    Debug.Log("Got stuck placing pickups");
+                    break;
+                }
                 index = Random.Range(0, floorTiles.Count);
                 dist = Vector2.Distance(GameManager.instance.player.transform.position, floorTiles[index]);
             }
@@ -286,7 +298,10 @@ public class MapBuilder : MonoBehaviour
             {
                 tries++;
                 if(tries > maxTries)
+                {
+                    Debug.Log("got stuck placing pickups");
                     break;
+                }
                 index = Random.Range(0, floorTiles.Count);
                 dist = Vector2.Distance(GameManager.instance.player.transform.position, floorTiles[index]);
             }
@@ -303,7 +318,10 @@ public class MapBuilder : MonoBehaviour
             {
                 tries++;
                 if (tries > maxTries)
+                {
+                    Debug.Log("Got stuck placing money");
                     break;
+                }
                 index = Random.Range(0, floorTiles.Count);
                 dist = Vector2.Distance(GameManager.instance.player.transform.position, floorTiles[index]);
             }
@@ -314,12 +332,21 @@ public class MapBuilder : MonoBehaviour
 
     private void PlaceExit()
     {
-        int minDist = 15;
+        int minDist = 7;
+
+        float maxTime = 1f;
+        float elapsedTime = 0f;
 
         int index = Random.Range(0, floorTiles.Count);
         float dist = Vector2.Distance(GameManager.instance.player.transform.position, floorTiles[index]);
         while (dist < minDist)
         {
+            elapsedTime += Time.deltaTime;
+            if(elapsedTime > maxTime)
+            {
+                Debug.Log("Got stuck placing the exit");
+                break;
+            }
             index = Random.Range(0, floorTiles.Count);
             dist = Vector2.Distance(GameManager.instance.player.transform.position, floorTiles[index]);
         }
