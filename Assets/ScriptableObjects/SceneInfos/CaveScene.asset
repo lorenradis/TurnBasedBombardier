@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449f8f5cd9a1c4e5fa58239485b40d47, type: 3}
   m_Name: CaveScene
   m_EditorClassIdentifier: 
-  sceneName: 
-  BGMClip: {fileID: 0}
+  sceneName: CaveScene
+  BGMClip: {fileID: 8300000, guid: 69b379a55d46645738f8c69a177eae1a, type: 3}
   AmbientClip: {fileID: 0}

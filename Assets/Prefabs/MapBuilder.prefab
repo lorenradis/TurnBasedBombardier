@@ -49,6 +49,7 @@ MonoBehaviour:
   floorRule: {fileID: 11400000, guid: 42685e096b74e40239c425cf1ac1739c, type: 2}
   wallRule: {fileID: 11400000, guid: 47bab5ead89704115949ec2e99b2db15, type: 2}
   wallsMap: {fileID: 1822807087856320937}
+  boomSound: {fileID: 8300000, guid: 79b325e6836f946e78d29b0d8ee1bb5b, type: 3}
   width: 38
   height: 24
   fillPercent: 45

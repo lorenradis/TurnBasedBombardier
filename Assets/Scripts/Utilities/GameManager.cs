@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    public AudioClip hurtSound;
+    public AudioClip healSound;
+    public AudioClip coinSound;
+
     private void Awake()
     {
         if (instance == null)
@@ -58,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     public UIManager uiManager;
     public Inventory inventory;
+    public AudioManager audioManager;
 
     public int[,] mapTiles;
 
@@ -98,7 +103,20 @@ public class GameManager : MonoBehaviour
     public delegate void OnPlayerTurnEnd();
     public static OnPlayerTurnEnd onPlayerTurnEndCallback;
 
+    [SerializeField]
+    private SceneInfo caveSceneInfo;
+    [SerializeField]
+    private SceneInfo townSceneInfo;
+    [SerializeField]
+    private SceneInfo mainMenuSceneInfo;
+
     public Transform player;
+
+    private void Start()
+    {
+        audioManager = GetComponent<AudioManager>();
+        AudioManager.instance = audioManager;
+    }
 
     private void Update()
     {
@@ -279,6 +297,7 @@ public class GameManager : MonoBehaviour
 
     public void GainMoney(int amount)
     {
+        audioManager.PlaySound(coinSound);
         money += amount;
         if (onMoneyChangedCallback != null)
             onMoneyChangedCallback.Invoke();
@@ -286,6 +305,7 @@ public class GameManager : MonoBehaviour
 
     public void GainHP(int amount)
     {
+        audioManager.PlaySound(healSound);
         hp += amount;
         if (hp > maxHP)
             hp = maxHP;
@@ -335,6 +355,8 @@ public class GameManager : MonoBehaviour
         if (player.GetComponent<PlayerControls>().isTakingDamage)
             return;
 
+        audioManager.PlaySound(hurtSound);
+
         player.GetComponent<PlayerControls>().isTakingDamage = true;
         hp -= amount;
         if(onHPChangedCallback != null)
@@ -382,7 +404,7 @@ public class GameManager : MonoBehaviour
 
     private void RestartGame()
     {
-        StartCoroutine(FadeToNewScene("MainMenuScene"));
+        StartCoroutine(FadeToNewScene(mainMenuSceneInfo));
         maxHP = 3;
         hp = maxHP;
         money = 0;
@@ -396,19 +418,24 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(FadeToNewScene("CaveScene"));
+        StartCoroutine(FadeToNewScene(caveSceneInfo));
         
         uiManager.StartGame();
     }
 
-    private IEnumerator FadeToNewScene(string sceneName)
+    public void LoadNewScene(SceneInfo sceneToLoad)
+    {
+        StartCoroutine(FadeToNewScene(sceneToLoad));
+    }
+
+    private IEnumerator FadeToNewScene(SceneInfo sceneToLoad)
     {
         ChangeState(GameState.LOADING);
         uiManager.FadeOut();
-
+        audioManager.PlayBGM(sceneToLoad.BGMClip);
         yield return new WaitForSeconds(.5f);
 
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneToLoad.sceneName);
 
         yield return new WaitForSeconds(.25f);
 
@@ -417,7 +444,7 @@ public class GameManager : MonoBehaviour
         uiManager.FadeIn();
         yield return new WaitForSeconds(.25f);
 
-        if(sceneName == "MainMenuScene")
+        if(sceneToLoad.sceneName == "MainMenuScene")
         {
             ChangeState(GameState.INTRO);
         }
@@ -431,11 +458,11 @@ public class GameManager : MonoBehaviour
     {
         level++;
         uiManager.DisplayLevel();
-        StartCoroutine(FadeToNewScene("CaveScene"));
+        StartCoroutine(FadeToNewScene(caveSceneInfo));
     }
 
-    public void LoadNewScene(string sceneToLoad)
+    public void LoadTownScene()
     {
-        StartCoroutine(FadeToNewScene(sceneToLoad));
+        StartCoroutine(FadeToNewScene(townSceneInfo));
     }
 }

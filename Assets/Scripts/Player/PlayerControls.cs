@@ -23,6 +23,8 @@ public class PlayerControls : MonoBehaviour
 
     public bool isTakingDamage = false;
 
+    public AudioClip bumpSound;
+    public AudioClip[] footStepSounds;
 
     //TOUCH CONTROLS
     private Vector3 touchStart;
@@ -199,7 +201,12 @@ public class PlayerControls : MonoBehaviour
         }
 
         if (isBlocked)
+        {
+            AudioManager.instance.PlaySound(bumpSound);
             return;
+        }
+
+        AudioManager.instance.PlaySound(footStepSounds[Random.Range(0, footStepSounds.Length)]);
 
         GameManager.instance.playerTurn = false;
 
@@ -252,7 +259,7 @@ public class PlayerControls : MonoBehaviour
     {
         DialogManager.instance.ShowQuestion("Exit the cave?", () =>
         {
-            GameManager.instance.LoadNewScene("TownScene");
+            GameManager.instance.LoadTownScene();
         }, () => {
             Debug.Log("That's a no on the exit!");
         });
@@ -318,6 +325,29 @@ public class PlayerControls : MonoBehaviour
 
         if (playerTurn)
             ResolvePosition();
+    }
+
+    public void TakeDamage(Transform source)
+    {
+        isTakingDamage = true;
+        StartCoroutine(Flicker(.5f));
+    }
+
+    private IEnumerator Flicker(float duration)
+    {
+        int frequency = 3;
+        int count = 0;
+        float elapsedTime = 0f;
+        while(elapsedTime < duration)
+        {
+            elapsedTime += duration;
+            if(count % frequency == 0)
+            {
+                spriteRenderer.enabled = !spriteRenderer.enabled;
+            }
+            yield return null;
+        }
+        spriteRenderer.enabled = true;
     }
 
     private void ResolvePosition()

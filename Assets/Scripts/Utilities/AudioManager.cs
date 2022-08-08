@@ -9,7 +9,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioSource SFXSource;
     [SerializeField]
+    private AudioSource SecondarySFXSource;
+    [SerializeField]
     private AudioSource ambientSource;
+
+    public static AudioManager instance = null;
 
     public void PlayBGM(AudioClip clip)
     {
@@ -22,8 +26,16 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        SFXSource.clip = clip;
-        SFXSource.Play();
+        if (SFXSource.isPlaying)
+        {
+            SecondarySFXSource.clip = clip;
+            SecondarySFXSource.Play();
+        }
+        else
+        {
+            SFXSource.clip = clip;
+            SFXSource.Play();
+        }
     }
 
     public void SetAmbience(AudioClip clip)

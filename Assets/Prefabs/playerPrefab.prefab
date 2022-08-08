@@ -105,6 +105,16 @@ MonoBehaviour:
   col2d: {fileID: 2363405157257220885}
   gridPosition: {x: 0, y: 0}
   isTakingDamage: 0
+  bumpSound: {fileID: 0}
+  footStepSounds:
+  - {fileID: 8300000, guid: 5e3d53d6549eb4393a1c93747984a64d, type: 3}
+  - {fileID: 8300000, guid: 7f336d804f64c4e19aa7329ea8e3dc0c, type: 3}
+  - {fileID: 8300000, guid: 3160dc4d62420414890b9f891046f79a, type: 3}
+  - {fileID: 8300000, guid: ffa866d493c13449e851062ef131f2c3, type: 3}
+  - {fileID: 8300000, guid: 921168427aefc4626884adcd613baa13, type: 3}
+  - {fileID: 8300000, guid: ffb4ae51b6986481c81c095bd57579f4, type: 3}
+  - {fileID: 8300000, guid: b21026261a090497d9789c00a1db4395, type: 3}
+  - {fileID: 8300000, guid: a23f3845f30964db2815f12098b01a38, type: 3}
 --- !u!1 &4716818739312154599
 GameObject:
   m_ObjectHideFlags: 0

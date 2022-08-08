@@ -12,6 +12,8 @@ public class MapBuilder : MonoBehaviour
     public RuleTile wallRule;
     public Tilemap wallsMap;
 
+    public AudioClip boomSound;
+
     public int width = 24;
     public int height = 14;
     public int fillPercent = 48;
@@ -363,6 +365,8 @@ public class MapBuilder : MonoBehaviour
             return;
 
         GameManager.instance.mapTiles[x, y] = 0;
+
+        AudioManager.instance.PlaySound(boomSound);
 
         //wallsMap.SetTile(new Vector3Int(x, y, 0), null);
 

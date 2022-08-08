@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SceneLoadTrigger : Interactable
 {
-    public string sceneToLoad;
+    public SceneInfo sceneToLoad;
     public string message;
 
     public override bool OnInteract()

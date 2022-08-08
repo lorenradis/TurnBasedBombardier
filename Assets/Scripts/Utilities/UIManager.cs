@@ -127,6 +127,18 @@ public class UIManager : MonoBehaviour
         levelText.text = GameManager.instance.level + "F";
     }
 
+    public void ToggleInventory()
+    {
+        if(inventoryPanel.activeSelf)
+        {
+            HideInventory();
+        }
+        else
+        {
+            ShowInventory();
+        }
+    }
+
     public void ShowInventory()
     {
         Debug.Log("Should be showing inventory");
