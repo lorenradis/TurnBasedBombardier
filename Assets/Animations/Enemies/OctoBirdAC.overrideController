@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OctoBirdAC
+  m_Controller: {fileID: 9100000, guid: f497b9ff25daa4ca4ab77b7cabcc191c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1a090f6db27e24109822616c634bb206, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 87b744c3d26ff4f179e765cda7c23c0c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 647378f7b74f543d58c4b50b97c90f40, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 87b744c3d26ff4f179e765cda7c23c0c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ab6904e34da5243adb0e6dfe3702eb53, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7b4e7a4909be24312bea8702be831ad0, type: 2}
