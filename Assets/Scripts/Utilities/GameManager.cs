@@ -276,11 +276,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(activeEnemies.Count < 1)
-        {
-            yield return new WaitForSeconds(turnTime);
-        }
-
         float maxTime = 1f;
         while (activeEnemies.Count > 0)
         {
@@ -292,10 +287,8 @@ public class GameManager : MonoBehaviour
                 {
                     activeEnemies.RemoveAt(i);
                 }
-
-                yield return null;
-
             }
+            yield return new WaitForSeconds(turnTime * .51f);
             maxTime -= Time.deltaTime;
             if (maxTime < 0)
             {
@@ -303,9 +296,12 @@ public class GameManager : MonoBehaviour
                 break;
 
             }
-            yield return new WaitForSeconds(turnTime);
+            yield return null;
         }
-        if(MapBuilder.instance != null)
+
+        yield return new WaitForSeconds(turnTime * .5f);
+
+        if (MapBuilder.instance != null)
         {
             MapBuilder.instance.GetComponent<MiniMap>().DrawMiniMap();
         }

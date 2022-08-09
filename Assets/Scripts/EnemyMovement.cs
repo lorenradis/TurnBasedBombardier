@@ -222,18 +222,6 @@ public class EnemyMovement : MonoBehaviour
 
         transform.position = endPosition;
 
-        /*
-        float sqrRemainingDistance = ((Vector2)transform.position - endPosition).sqrMagnitude;
-
-        while (sqrRemainingDistance > float.Epsilon)
-        {
-            Vector2 newPosition = Vector2.MoveTowards(rb2d.position, endPosition, inverseMoveTime * Time.deltaTime);
-            rb2d.MovePosition(newPosition);
-            sqrRemainingDistance = ((Vector2)transform.position - endPosition).sqrMagnitude;
-            yield return null;
-        }
-        */
-
     }
 
     public void TakeDamage(int amount)
