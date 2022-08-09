@@ -15,6 +15,6 @@ public class borderSprite : MonoBehaviour
 
     private void LateUpdate()
     {
-        spriteRenderer.sortingOrder = (int)referenceRenderer.sortingOrder - 11;
+        spriteRenderer.sortingOrder = (int)referenceRenderer.sortingOrder - 1;
     }
 }

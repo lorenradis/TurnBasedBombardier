@@ -46,6 +46,9 @@ public class Projectile : MonoBehaviour
             transform.position = newPosition;
             yield return null;
         }
-
+        if(GetComponent<Hazard>())
+        {
+            GetComponent<Hazard>().CheckForPlayerContact();
+        }
     }
 }

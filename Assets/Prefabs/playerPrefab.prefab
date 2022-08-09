@@ -105,7 +105,7 @@ MonoBehaviour:
   col2d: {fileID: 2363405157257220885}
   gridPosition: {x: 0, y: 0}
   isTakingDamage: 0
-  bumpSound: {fileID: 0}
+  bumpSound: {fileID: 8300000, guid: c0012e1d5e4d7487685d531a3b426147, type: 3}
   footStepSounds:
   - {fileID: 8300000, guid: 5e3d53d6549eb4393a1c93747984a64d, type: 3}
   - {fileID: 8300000, guid: 7f336d804f64c4e19aa7329ea8e3dc0c, type: 3}

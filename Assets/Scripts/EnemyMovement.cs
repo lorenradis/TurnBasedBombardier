@@ -192,7 +192,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttemptMove(Vector2 newPosition)
     {
-        if(GameManager.instance.mapTiles[(int)newPosition.x, (int)newPosition.y] == 0)
+        Vector2Int targetPosition = new Vector2Int((int)newPosition.x, (int)newPosition.y);
+        Vector2Int playerPosition = new Vector2Int((int)GameManager.instance.player.position.x, (int)GameManager.instance.player.position.y);
+        if(GameManager.instance.mapTiles[targetPosition.x, targetPosition.y] == 0 && targetPosition != playerPosition)
         {
             StartCoroutine(SmoothMovement(newPosition));
         }

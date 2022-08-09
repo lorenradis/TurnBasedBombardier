@@ -196,8 +196,20 @@ public class PlayerControls : MonoBehaviour
             {
                 isBlocked = hit.transform.GetComponent<Interactable>().OnInteract();
             }
+            else if(hit.transform.GetComponent<EnemyMovement>())
+                {
+                    isBlocked = true;
+            }else if(hit.transform.GetComponent<Hazard>())
+            {
+                Hazard hazard = hit.transform.GetComponent<Hazard>();
+                isBlocked = hazard.preventMovement;
+                hazard.OnPlayerContact();
+            }
             else
-                Debug.Log(hit.transform.name);
+            {
+                Debug.Log("I hit a " + hit.transform.name);
+            }
+            
         }
 
         if (isBlocked)
@@ -223,11 +235,13 @@ public class PlayerControls : MonoBehaviour
             }
             else
             {
+                AudioManager.instance.PlaySound(bumpSound);
                 ResolvePosition();
             }
         }
         else
         {
+            AudioManager.instance.PlaySound(bumpSound);
             ResolvePosition();
         }
 
@@ -327,10 +341,14 @@ public class PlayerControls : MonoBehaviour
             ResolvePosition();
     }
 
-    public void TakeDamage(Transform source)
+    public void TakeDamage(Transform source, bool knockback)
     {
         isTakingDamage = true;
         StartCoroutine(Flicker(.5f));
+        if(knockback)
+        {
+            Knockback(source);
+        }
     }
 
     private IEnumerator Flicker(float duration)

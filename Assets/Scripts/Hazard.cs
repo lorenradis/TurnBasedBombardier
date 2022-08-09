@@ -9,26 +9,34 @@ public class Hazard : MonoBehaviour
     public int damage = 1;
     public float distance = .5f;
 
+    public bool causesKnockback;
+    public bool preventMovement;
+
     private void OnEnable()
     {
         Debug.Log("Adding myself to the player turn end method");
         GameManager.onPlayerTurnEndCallback += CheckForPlayerContact;
     }
 
-    private void CheckForPlayerContact()
+    public void CheckForPlayerContact()
     {
         float dist = Vector2.Distance(transform.position, GameManager.instance.player.position);
 
-        Debug.Log("I'm checking how close the player is.  looks like they're " + dist + " away.");
+        Debug.Log("The player is " + dist + " away from " + name);
 
         if (dist <= distance)
         {
-            GameManager.instance.TakeDamage(damage);
-            GameManager.instance.player.GetComponent<PlayerControls>().Knockback(transform);
-            if (destroyOnTouch)
-            {
-                Destroy(gameObject);
-            }
+            OnPlayerContact();
+        }
+    }
+
+    public void OnPlayerContact()
+    {
+        GameManager.instance.TakeDamage(damage);
+        GameManager.instance.player.GetComponent<PlayerControls>().Knockback(transform);
+        if (destroyOnTouch)
+        {
+            Destroy(gameObject);
         }
     }
 
