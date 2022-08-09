@@ -44,6 +44,12 @@ public class UIManager : MonoBehaviour
     private ShopKeeper shopKeeper;
     private List<Item> shopKeeperInventory = new List<Item>();
 
+    [SerializeField]
+    private GameObject upgradeShopKeeperPanel;
+    [SerializeField]
+    private UpgradeSlot[] upgradeSlots;
+    private UpgradeShopKeeper upgradeShopKeeper;
+
     private void Start()
     {
         GameManager.onHPChangedCallback += DisplayHP;
@@ -325,6 +331,32 @@ public class UIManager : MonoBehaviour
         ShowInventory();
         isSelling = true;
         isBuying = false;
+    }
+
+    public void ShowUpgrades(List<Upgrade> upgrades, UpgradeShopKeeper _upgradeShopKeeper)
+    {
+        GameManager.instance.EnterMenuState();
+        upgradeShopKeeperPanel.SetActive(true);
+
+        upgradeShopKeeper = _upgradeShopKeeper;
+        for (int i = 0; i < upgradeSlots.Length; i++)
+        {
+            if (i < upgrades.Count)
+            {
+                upgradeSlots[i].SetUpgrade(upgrades[i]);
+            }
+            else
+            {
+                upgradeSlots[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void HideUpgrades()
+    {
+        GameManager.instance.ExitMenuState();
+        upgradeShopKeeperPanel.SetActive(false);
+
     }
 
     public void ShowItemInfo(Item item)

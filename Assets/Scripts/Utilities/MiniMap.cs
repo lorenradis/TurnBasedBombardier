@@ -11,10 +11,10 @@ public class MiniMap : MonoBehaviour
     public GameObject dotPrefab;
     public Color wallColor;
 
-    public int startX = 0;
-    public int startY = 0;
+    private float startX = 0;
+    private float startY = 0;
 
-    public float scaleFactor = .125f;
+    private float scaleFactor = .125f;
 
     private bool hasGenerated;
 
@@ -22,8 +22,10 @@ public class MiniMap : MonoBehaviour
 
     private void Start()
     {
-        startX = (int)(Camera.main.orthographicSize * Camera.main.aspect * -1f) + startX;
-        startY = (int)(Camera.main.orthographicSize * -1f) + startY;
+        float camHeight = Camera.main.orthographicSize;
+        float camWidth = camHeight * Camera.main.aspect;
+        startX = camWidth * -1f + .5f;
+        startY = camHeight * -1f + .5f;
     }
 
     public void GenerateMiniMap()
@@ -36,7 +38,7 @@ public class MiniMap : MonoBehaviour
         {
             for (int y = -1; y <= MapBuilder.instance.height; y++)
             {
-                Vector2 newPosition = new Vector2(Camera.main.transform.position.x + startX + x * scaleFactor, Camera.main.transform.position.y + startY + y * scaleFactor);
+                Vector3 newPosition = new Vector3(Camera.main.transform.position.x + startX + x * scaleFactor, Camera.main.transform.position.y + startY + y * scaleFactor, 0f);
                 GameObject newDot = Instantiate(dotPrefab, newPosition, Quaternion.identity) as GameObject;
                 newDot.transform.SetParent(Camera.main.transform);
                 if (x >= 0 && x < MapBuilder.instance.width && y >= 0 && y < MapBuilder.instance.height)

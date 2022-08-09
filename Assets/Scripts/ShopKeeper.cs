@@ -8,6 +8,20 @@ public class ShopKeeper : Interactable
 
     public List<Item> itemsForSale = new List<Item>();
 
+    [SerializeField]
+    private string startShop;
+    [SerializeField]
+    private string buyOrSell;
+    [SerializeField]
+    private string anythingElse;
+    [SerializeField]
+    private string successSale;
+    [SerializeField]
+    private string successBuy;
+    [SerializeField]
+    private string startSell;
+
+
     public override bool OnInteract()
     {
         StartShopDialog();
