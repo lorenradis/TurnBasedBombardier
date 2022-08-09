@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 
     public ItemSlot[] itemSlots;
 
-    public int maxItems = 7;
+    public int maxItems = 3;
 
     public bool AddItemToList(Item item)
     {

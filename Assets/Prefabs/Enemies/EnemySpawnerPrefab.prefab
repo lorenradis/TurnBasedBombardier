@@ -56,3 +56,9 @@ MonoBehaviour:
   - startLevel: 1
     endLevel: 20
     objectToSpawn: {fileID: 7899677532218856639, guid: 33c06b7f4cbf84f2bbed97ef2bbf294c, type: 3}
+  - startLevel: 4
+    endLevel: 20
+    objectToSpawn: {fileID: 7899677532218856639, guid: 97f29ee8ec9c642d3a433efb653eeefc, type: 3}
+  - startLevel: 6
+    endLevel: 20
+    objectToSpawn: {fileID: 7899677532218856639, guid: 95de57d59f6024575aca08ecd75a1413, type: 3}

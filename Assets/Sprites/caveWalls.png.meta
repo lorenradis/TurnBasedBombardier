@@ -216,6 +216,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1648,6 +1649,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      caveWalls_13: 6661563146674241587
+      caveWalls_37: -3779791343331622536
+      caveWalls_7: -1456387643379629387
+      caveWalls_11: -7142242038900258174
+      caveWalls_24: -4780576743164865294
+      caveWalls_49: -5190926159676851371
+      caveWalls_35: -5644717039014891998
+      caveWalls_3: 4469054853463146597
+      caveWalls_39: -2878547379601379391
+      caveWalls_44: -8507108974219697703
+      caveWalls_8: 7066347466350858529
+      caveWalls_61: -5492570797597058596
+      caveWalls_36: -5428314440727120913
+      caveWalls_28: -1357065754837213520
+      caveWalls_29: 5297450456982244303
+      caveWalls_50: 1320020801988351309
+      caveWalls_20: 4367945753091920987
+      caveWalls_4: -5654763077159679100
+      caveWalls_14: 5121867507987334726
+      caveWalls_22: -1690275708486851948
+      caveWalls_31: -5684494369596768991
+      caveWalls_45: -1263797119943124137
+      caveWalls_62: 3367701608665180022
+      caveWalls_25: 2092848414371622582
+      caveWalls_15: -5404160681127614787
+      caveWalls_47: -6815346701170599749
+      caveWalls_23: -6258317854925065731
+      caveWalls_53: -3635818441034160969
+      caveWalls_2: -3076501631417115076
+      caveWalls_27: 6912591842992227721
+      caveWalls_38: 6600586751666799735
+      caveWalls_33: -8127913462142230654
+      caveWalls_32: -4889505337103773513
+      caveWalls_12: -2001477384202108257
+      caveWalls_41: -7937401283464745190
+      caveWalls_59: -3253994825742658363
+      caveWalls_0: 606064397394488427
+      caveWalls_46: -3846906372818617260
+      caveWalls_34: 1554832476995282989
+      caveWalls_51: 3936633923772443031
+      caveWalls_18: 6607634782075247302
+      caveWalls_1: 7066340494482538701
+      caveWalls_26: 5412759291547264220
+      caveWalls_17: -945161420492387959
+      caveWalls_55: -513627390554222919
+      caveWalls_9: 4304793217061742142
+      caveWalls_30: -581073271125670016
+      caveWalls_5: -5401289873983032087
+      caveWalls_48: 7286294283449631185
+      caveWalls_56: -1831832302356737573
+      caveWalls_43: 345817599725483587
+      caveWalls_40: 2791499374447951943
+      caveWalls_52: 663773609064511862
+      caveWalls_58: -9071215304434964070
+      caveWalls_21: 5110512951461368437
+      caveWalls_6: -7361135824484062275
+      caveWalls_19: -5684281274656511529
+      caveWalls_63: -2972903221423396128
+      caveWalls_54: 6278190798208294804
+      caveWalls_16: -3399347951114355507
+      caveWalls_57: -377365462540315946
+      caveWalls_10: 8673454611162967788
+      caveWalls_42: -3482754795216139085
+      caveWalls_60: -7313504760901574394
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

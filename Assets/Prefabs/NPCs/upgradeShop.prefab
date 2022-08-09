@@ -141,11 +141,11 @@ MonoBehaviour:
     you may find useful.
   successSellDialog: Thank you, may it be helpful on your quest.
   cancelSellDialog: I understand, take care my friend.
-  compassSprite: {fileID: 6776534911435134122, guid: 45f6827cccf984b118a111accec34ce8, type: 3}
-  mapSprite: {fileID: -3691619959564681098, guid: 45f6827cccf984b118a111accec34ce8, type: 3}
-  bigBombSprite: {fileID: -542804628941198373, guid: 45f6827cccf984b118a111accec34ce8, type: 3}
-  biggerBombSprite: {fileID: 5288437727060092688, guid: 45f6827cccf984b118a111accec34ce8, type: 3}
-  biggestBombSprite: {fileID: 6008869342370495498, guid: 45f6827cccf984b118a111accec34ce8, type: 3}
+  compassSprite: {fileID: -4592191567775833621, guid: 998e9c2e6e7f744b283aae30a62bdb7c, type: 3}
+  mapSprite: {fileID: -1840291791675230271, guid: 998e9c2e6e7f744b283aae30a62bdb7c, type: 3}
+  bigBombSprite: {fileID: -2956050432555672463, guid: 998e9c2e6e7f744b283aae30a62bdb7c, type: 3}
+  biggerBombSprite: {fileID: 4369517717803855226, guid: 998e9c2e6e7f744b283aae30a62bdb7c, type: 3}
+  biggestBombSprite: {fileID: -8112808368715295962, guid: 998e9c2e6e7f744b283aae30a62bdb7c, type: 3}
   bigBombBagSprite: {fileID: 0}
   biggerBombBagSprite: {fileID: 0}
   biggestBombBagSprite: {fileID: 0}

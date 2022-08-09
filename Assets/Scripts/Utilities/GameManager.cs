@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +12,8 @@ public class GameManager : MonoBehaviour
     public AudioClip hurtSound;
     public AudioClip healSound;
     public AudioClip coinSound;
+
+    public Button StartGameButton;
 
     private void Awake()
     {
@@ -63,6 +67,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public Inventory inventory;
     public AudioManager audioManager;
+    public UpgradeManager upgradeManager;
 
     public int[,] mapTiles;
 
@@ -79,10 +84,11 @@ public class GameManager : MonoBehaviour
     public int maxHP = 3;
     public int maxHPCap = 12;
     public int sightRange = 7;
-    public float bombRadius = 1.5f;
-    private float smallRadius = 1.5f;
-    private float medRadius = 2.5f;
-    private float largeRadius = 4.5f;
+    public float bombRadius = 2f;
+    private float smallRadius = 2f;
+    private float medRadius = 3f;
+    private float largeRadius = 4f;
+    private float maxRadius = 5f;
     public int bombTime = 4;
     public int bombDamage = 2;
     public int maxBombs = 1;
@@ -91,7 +97,9 @@ public class GameManager : MonoBehaviour
     public int speed = 10;
     public int timeWaited = 0;
 
+    //upgrades
     public bool hasCompass = false;
+    public bool hasMap = false;
 
     public delegate void OnHPChanged();
     public static OnHPChanged onHPChangedCallback;
@@ -114,6 +122,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        UpgradeManager.instance = upgradeManager;
+        upgradeManager.SetupUpgrades();
         audioManager = GetComponent<AudioManager>();
         AudioManager.instance = audioManager;
     }
@@ -128,9 +138,10 @@ public class GameManager : MonoBehaviour
         switch(gameState)
         {
             case GameState.INTRO:
+                EventSystem.current.SetSelectedGameObject(StartGameButton.gameObject);
                 if(Input.anyKeyDown || Input.touchCount > 0)
                 {
-                    StartGame();
+                    //StartGame();
                 }
                 break;
             case GameState.NORMAL:
@@ -264,6 +275,12 @@ public class GameManager : MonoBehaviour
                 activeEnemies.Add(enemies[i]);
             }
         }
+
+        if(activeEnemies.Count < 1)
+        {
+            yield return new WaitForSeconds(turnTime);
+        }
+
         float maxTime = 1f;
         while (activeEnemies.Count > 0)
         {
@@ -303,6 +320,13 @@ public class GameManager : MonoBehaviour
             onMoneyChangedCallback.Invoke();
     }
 
+    public void SpendMoney(int amount)
+    {
+        money -= amount;
+        if (onMoneyChangedCallback != null)
+            onMoneyChangedCallback.Invoke();
+    }
+
     public void GainHP(int amount)
     {
         audioManager.PlaySound(healSound);
@@ -323,7 +347,7 @@ public class GameManager : MonoBehaviour
         bombDamage += amount;
     }
 
-    public void IncreaseBombRange(float amount)
+    public void IncreaseBombRange()
     {
         if(bombRadius == smallRadius)
         {
@@ -331,6 +355,9 @@ public class GameManager : MonoBehaviour
         }else if(bombRadius == medRadius)
         {
             bombRadius = largeRadius;
+        }else if(bombRadius == largeRadius)
+        {
+            bombRadius = maxRadius;
         }
     }
 
@@ -418,6 +445,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (gameState != GameState.INTRO)
+            return;
         StartCoroutine(FadeToNewScene(caveSceneInfo));
         
         uiManager.StartGame();

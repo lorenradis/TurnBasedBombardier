@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 2171717959363459962}
   - component: {fileID: 1586906685290959762}
   m_Layer: 0
-  m_Name: enemyPrefab
+  m_Name: slimePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -42,6 +42,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -256,6 +257,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      coinSpin_1: -825031263153393812
+      coinSpin_5: 5084439670868407540
+      coinSpin_3: -4148028153593694596
+      coinSpin_0: -3807676682627647657
+      coinSpin_4: 7058019579809242340
+      coinSpin_2: -1168214142377249600
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

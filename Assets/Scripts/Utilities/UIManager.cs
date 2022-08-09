@@ -333,12 +333,23 @@ public class UIManager : MonoBehaviour
         isBuying = false;
     }
 
-    public void ShowUpgrades(List<Upgrade> upgrades, UpgradeShopKeeper _upgradeShopKeeper)
+    public void ShowUpgrades()
     {
         GameManager.instance.EnterMenuState();
         upgradeShopKeeperPanel.SetActive(true);
 
-        upgradeShopKeeper = _upgradeShopKeeper;
+        List<Upgrade> upgrades = new List<Upgrade>();
+
+        for (int i = 0; i < UpgradeManager.instance.upgrades.Count; i++)
+        {
+            if(!UpgradeManager.instance.upgrades[i].hasPurchased)
+            {
+                upgrades.Add(UpgradeManager.instance.upgrades[i]);
+            }
+        }
+
+        EventSystem.current.SetSelectedGameObject(upgradeSlots[0].gameObject);
+
         for (int i = 0; i < upgradeSlots.Length; i++)
         {
             if (i < upgrades.Count)

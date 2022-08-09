@@ -99,6 +99,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -724,6 +725,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      RyansCharacters_23: -6364077078125869435
+      RyansCharacters_2: -8131855794367644565
+      RyansCharacters_18: -6735480498869558361
+      RyansCharacters_12: 1096207120521418384
+      RyansCharacters_3: 8189637774123472760
+      RyansCharacters_13: 1555989728586692399
+      RyansCharacters_0: -7115925986345630333
+      RyansCharacters_6: -3511588252628563676
+      RyansCharacters_21: 1012400348040302293
+      RyansCharacters_16: -7469843286687222133
+      RyansCharacters_1: 9130659346822068044
+      RyansCharacters_11: -4271712433126029569
+      RyansCharacters_22: -1716946083394361332
+      RyansCharacters_9: -1802804639835786557
+      RyansCharacters_5: -5280853924481121840
+      RyansCharacters_15: -2606758708300761800
+      RyansCharacters_24: 8278912576617930558
+      RyansCharacters_19: -6845409607336584533
+      RyansCharacters_7: 4485662552875699526
+      RyansCharacters_8: -5034951896751366987
+      RyansCharacters_20: 2512150065121543030
+      RyansCharacters_17: -2409716861476174721
+      RyansCharacters_4: 6272911777010277705
+      RyansCharacters_14: 3930148914002953956
+      RyansCharacters_10: -5816084493937792664
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: bigSlimeAC
+  m_Controller: {fileID: 9100000, guid: f497b9ff25daa4ca4ab77b7cabcc191c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ab6904e34da5243adb0e6dfe3702eb53, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7435959beb7f5464b832144d21fec617, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 647378f7b74f543d58c4b50b97c90f40, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eafaf90f05368485e8785507a39168fc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1a090f6db27e24109822616c634bb206, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0291dd414d0ea40aba1b2144e360f95d, type: 2}

@@ -168,6 +168,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1276,6 +1277,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      shadowBlob_28: -2343934525268925611
+      shadowBlob_8: -5267832843788226199
+      shadowBlob_16: -5856296288167526504
+      shadowBlob_39: -8924115183952684569
+      shadowBlob_36: -2764209948855824268
+      shadowBlob_2: -2022082244035192768
+      shadowBlob_42: 5115804243917762076
+      shadowBlob_0: 4460639321548867518
+      shadowBlob_13: -1168941759089472555
+      shadowBlob_43: -4138293687904085876
+      shadowBlob_26: 7295438493064078539
+      shadowBlob_46: 4119028938037020584
+      shadowBlob_19: 7840788130426764986
+      shadowBlob_4: 2630886069470756368
+      shadowBlob_25: 1893063744794293164
+      shadowBlob_30: -5409821069252499909
+      shadowBlob_31: 7293538093940662749
+      shadowBlob_37: -1754506456124428486
+      shadowBlob_44: -2790023675993478395
+      shadowBlob_47: 4714863871486388747
+      shadowBlob_3: 3914052031893837683
+      shadowBlob_45: -5943014534369497953
+      shadowBlob_10: 234564217340341275
+      shadowBlob_29: 3520636727235204125
+      shadowBlob_6: 1442569554003590918
+      shadowBlob_7: -3832889022395299312
+      shadowBlob_33: 348407514864314921
+      shadowBlob_15: -3644096878492225618
+      shadowBlob_20: 8853368384294236290
+      shadowBlob_27: -332071611547824643
+      shadowBlob_1: -3522498087492491726
+      shadowBlob_38: -5433928459583444302
+      shadowBlob_32: -6157064628361761257
+      shadowBlob_12: 2035041089840886467
+      shadowBlob_18: -1296806505353935152
+      shadowBlob_21: -7319635835475137911
+      shadowBlob_35: 6108939006830017458
+      shadowBlob_41: -5661082036056497928
+      shadowBlob_34: 2349778615120087408
+      shadowBlob_23: -2897232011044221485
+      shadowBlob_9: -2092365126496876453
+      shadowBlob_17: 7683135390176375795
+      shadowBlob_40: 283752220214083675
+      shadowBlob_24: -5498016023207557055
+      shadowBlob_11: 8154293209375168230
+      shadowBlob_14: 5221470424916531541
+      shadowBlob_22: -1390764223118581301
+      shadowBlob_5: 5888809923440871410
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -51,6 +51,9 @@ public class MiniMap : MonoBehaviour
 
     public void DrawMiniMap()
     {
+        if (!GameManager.instance.hasMap)
+            return;
+
         if (!hasGenerated)
         {
             GenerateMiniMap();

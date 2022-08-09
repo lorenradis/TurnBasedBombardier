@@ -84,6 +84,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -604,6 +605,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      dirtPathOnGrass_9: -2107509331789043028
+      dirtPathOnGrass_3: -8665483981367080167
+      dirtPathOnGrass_8: -7788369078765439692
+      dirtPathOnGrass_10: -52747457778290071
+      dirtPathOnGrass_7: -8546702041337286488
+      dirtPathOnGrass_2: -7090774924096007271
+      dirtPathOnGrass_0: 8314170444253102941
+      dirtPathOnGrass_18: 7646974271646709939
+      dirtPathOnGrass_5: -8830927515622028064
+      dirtPathOnGrass_4: 5950399579905914549
+      dirtPathOnGrass_19: -4173413085713287858
+      dirtPathOnGrass_16: 8846902743787643662
+      dirtPathOnGrass_12: -8626475781845376478
+      dirtPathOnGrass_13: 6949211438094667774
+      dirtPathOnGrass_6: -2124143336433508891
+      dirtPathOnGrass_14: -401448300066461847
+      dirtPathOnGrass_15: -636742464877341888
+      dirtPathOnGrass_11: 7812902538149404923
+      dirtPathOnGrass_17: -6608578041986491402
+      dirtPathOnGrass_1: 5853917943879960142
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
